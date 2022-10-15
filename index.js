@@ -1,4 +1,4 @@
-const { fstat, writeFileSync } = require('fs');
+const { fstat, writeFileSync, readdirSync } = require('fs');
 
 
 
@@ -40,7 +40,7 @@ const reading = (fileName) => {
 
 
 const main = async () => {
-    const FILENAMES = ['info-2022-10-01.log','info-2022-10-02.log']
+    const FILENAMES = readdirSync('logs') //['info-2022-10-01.log','info-2022-10-02.log']
     await Promise.all(FILENAMES.map(fileName => reading(fileName)))
     console.log('all export done....')
 }
